@@ -10,4 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<sys/types.h>
+#include<unistd.h>
 
+int	main(int argc, char **argv)
+{
+	int	proc_id;
+
+	proc_id = (int)getpid();
+	__builtin_printf("My PID is %d\n", proc_id);
+	return (0);
+}

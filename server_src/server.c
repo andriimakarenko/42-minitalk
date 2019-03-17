@@ -56,9 +56,7 @@ int		main(void)
 	int		proc_id;
 
 	proc_id = (int)getpid();
-	ft_putstr(ft_strjoin(ft_itoa(proc_id), \
-	" - my PID. If you enter anything other than exactly this, I won't work,"
-	" and that's a designed feature, not a bug.\n\n"));
+	ft_putstr(ft_strjoin(ft_itoa(proc_id), " - my PID.\n\n"));
 	signal(SIGUSR1, handle_sig1);
 	signal(SIGUSR2, handle_sig2);
 	get_new_message();
@@ -70,7 +68,7 @@ int		main(void)
 			g_message.gbit = 0;
 			if (g_message.gchar == 0)
 			{
-				ft_putstr(g_message.text);
+				ft_putstr(ft_strjoin("Received:\n", g_message.text));
 				ft_putstr("\n");
 				get_new_message();
 			}

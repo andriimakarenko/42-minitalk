@@ -12,64 +12,27 @@
 
 #include "../minitalk.h"
 
-int is_numeric(const char *str)
+void	send_symbol(int server_pid, unsigned char sym)
 {
-	int i;
+	uint8_t		counter;
 
-	i = 0;
-	while (str[i] != '\0')
+	counter = 1 << 6;
+	while (counter)
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (1);
-		i++;
-	}
-	return(0);
-}
-
-int		*c_to_bin(char msg)
-{
-	int 	i;
-	int		k;
-	int		*buf;
-
-	i = 8;
-	k = 0;
-	buf = ft_memalloc(8);
-	while (i-- > 0)
-	{
-		buf[k] = msg >> i;
-		buf[k] = buf[k] % 2;
-		k++;
-	}
-	return (buf);
-}
-
-void	send_symbol(pid_t server_pid, char c)
-{
-	int			i;
-	int			*buf;
-
-	i = 0;
-	buf = c_to_bin(c);
-	while (i < 8)
-	{
-		if (buf[i] == 0)
+		if (sym)
 		{
-			ft_putnbr(0);
 			if (kill(server_pid, SIGUSR1) == -1)
-				exit(0);
+				ft_putstr("Fail.\n");
 		}
 		else
 		{
-			ft_putnbr(1);
 			if (kill(server_pid, SIGUSR2) == -1)
-				exit(0);
+				ft_putstr("Fail.\n");
 		}
-		ft_putchar('\n');
-		i++;
+		counter >>= 1;
+		usleep(300);
 	}
 }
-
 void	sender(int server_pid, const char *message)
 {
 	int i;

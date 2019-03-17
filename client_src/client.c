@@ -67,7 +67,6 @@ void	send_symbol(pid_t server_pid, char c)
 		}
 		ft_putchar('\n');
 		i++;
-		free (buf);
 	}
 }
 

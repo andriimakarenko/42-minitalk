@@ -30,9 +30,9 @@ typedef struct		s_message
 ** The server functions
 */
 
-void		print_message(char *str);
-char		*add_char(char *str, char c);
-void		get_new_message(void);
-void		*update_char(int sig);
+// void		print_message(char *str);
+char			*add_char(char *str, char c);
+void			get_new_message(void);
+static void		update_char(int sig);
 
 #endif

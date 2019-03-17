@@ -14,12 +14,12 @@
 
 t_message g_message;
 
-void	print_message(char *str)
-{
-	ft_putstr("The message is received:\n");
-	ft_putstr(str);
-	ft_putchar('\n');
-}
+// void	print_message(char *str)
+// {
+// 	ft_putstr("The message is received:\n");
+// 	ft_putstr(str);
+// 	ft_putchar('\n');
+// }
 
 char	*add_char(char *str, char c)
 {
@@ -42,7 +42,7 @@ void	get_new_message(void)
 	g_message.gbit = 0;
 }
 
-void	*update_char(int sig)
+static void	update_char(int sig)
 {
 		int value;
 
@@ -51,7 +51,6 @@ void	*update_char(int sig)
 			value = 1;
 		g_message.gchar ^= (-value ^ g_message.gchar) & (1UL << g_message.gbit);
 		g_message.gbit++;
-		return (NULL);
 }
 
 int		main(void)
@@ -60,10 +59,10 @@ int		main(void)
 
 	proc_id = (int)getpid();
 	ft_putstr(ft_strjoin(ft_itoa(proc_id), \
-	" - my PID. If you enter anything other than exactly this, I won't work, \
-	and that's a designed feature, not a bug.\n\n"));
-	signal(SIGUSR1, update_char(SIGUSR1));
-	signal(SIGUSR2, update_char(SIGUSR2));
+	" - my PID. If you enter anything other than exactly this, I won't work,"
+	" and that's a designed feature, not a bug.\n\n"));
+	signal(SIGUSR1, update_char);
+	signal(SIGUSR2, update_char);
 	get_new_message();
 	while (ft_strcmp(g_message.text, "exit"))
 	{
@@ -72,7 +71,7 @@ int		main(void)
 			g_message.text = add_char(g_message.text, g_message.gchar);
 			g_message.gbit = 0;
 			if (g_message.gchar == '\0')
-				print_message(g_message.text);
+				ft_putstr(g_message.text);
 			get_new_message();
 		}
 		usleep(30);

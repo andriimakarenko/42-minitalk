@@ -96,8 +96,9 @@ static void	handle_sig1(int sig)
 {
 	(void)sig;
 	printf("Read a 1\n");
-	g_message.gchar ^= 1 << (8 - g_message.gbit);
-	printf("Char is now %s\nCurrent bit is %d\n", ft_itoa_base(g_message.gchar, 2), g_message.gbit);
+	printf("Char before transform is %s\n", ft_itoa_base(g_message.gchar, 2));
+	g_message.gchar ^= 1 << (7 - g_message.gbit);
+	printf("Char is now %s\n", ft_itoa_base(g_message.gchar, 2));
 	g_message.gbit++;
 }
 
@@ -105,7 +106,7 @@ static void	handle_sig2(int sig)
 {
 	(void)sig;
 	printf("Read a 0\n");
-	printf("Char is now %s\nCurrent bit is %d\n", ft_itoa_base(g_message.gchar, 2), g_message.gbit);
+	printf("Char is now %s\n", ft_itoa_base(g_message.gchar, 2));
 	g_message.gbit++;
 }
 

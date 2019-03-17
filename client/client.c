@@ -46,4 +46,5 @@ int	main(int argc, char **argv)
 	server_pid = (pid_t)ft_atoi(argv[1]);
 	if (server_pid < 0)
 		return (print_exit("PID should be between 0 and int max\n"));
+	signal(SIGUSR1, print_exit("The server confirmed receival\n"));
 }

@@ -35,15 +35,11 @@ char	*add_char(char *str, char c)
 	return (result);
 }
 
-t_message	*get_new_message(void)
+void	get_new_message(void)
 {
-	t_message	*result;
-
-	// result = (t_message*)malloc(sizeof(t_message));
-	// result.text
-	// message[0] = '\0';
-	result = NULL;
-	return (result);
+	g_message.text = (char*)malloc(sizeof(char));
+	g_message.text[0] = '\0';
+	g_message.gbit = 0;
 }
 
 void	*update_char(int sig)
@@ -68,7 +64,7 @@ int		main(void)
 	and that's a designed feature, not a bug.\n\n"));
 	signal(SIGUSR1, update_char(SIGUSR1));
 	signal(SIGUSR2, update_char(SIGUSR2));
-	g_message = *(get_new_message());
+	get_new_message();
 	while (ft_strcmp(g_message.text, "exit"))
 	{
 		if (g_message.gbit == 8)
@@ -77,8 +73,9 @@ int		main(void)
 			g_message.gbit = 0;
 			if (g_message.gchar == '\0')
 				print_message(g_message.text);
+			get_new_message();
 		}
-		usleep(3);
+		usleep(30);
 	}
 	return (0);
 }

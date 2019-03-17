@@ -76,22 +76,6 @@ void	get_new_message(void)
 	g_message.gbit = 0;
 }
 
-// static void	update_char(int sig)
-// {
-// 		int value;
-//
-// 		value = 0;
-// 		if (sig == SIGUSR1)
-// 			value = 1;
-// 		if (sig == SIGUSR1)
-// 			printf("Received 1\n");
-// 		if (sig == SIGUSR2)
-// 			printf("Received 2\n");
-// 		g_message.gchar ^= (-value ^ g_message.gchar) & (1UL << g_message.gbit);
-// 		g_message.gbit++;
-// 		printf("Char is now %x\n", g_message.gchar);
-// }
-
 static void	handle_sig1(int sig)
 {
 	(void)sig;
@@ -118,8 +102,6 @@ int		main(void)
 	ft_putstr(ft_strjoin(ft_itoa(proc_id), \
 	" - my PID. If you enter anything other than exactly this, I won't work,"
 	" and that's a designed feature, not a bug.\n\n"));
-	// signal(SIGUSR1, update_char);
-	// signal(SIGUSR2, update_char);
 	signal(SIGUSR1, handle_sig1);
 	signal(SIGUSR2, handle_sig2);
 	get_new_message();

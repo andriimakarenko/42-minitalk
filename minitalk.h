@@ -22,7 +22,7 @@
 typedef struct		s_message
 {
 	char			*text;
-	int				gchar;
+	char			gchar;
 	unsigned char	gbit;
 }					t_message;
 

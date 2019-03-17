@@ -32,7 +32,7 @@ typedef struct		s_message
 
 void		print_message(char *str);
 char		*add_char(char *str, char c);
-t_message	*get_new_message(void);
+void		get_new_message(void);
 void		*update_char(int sig);
 
 #endif

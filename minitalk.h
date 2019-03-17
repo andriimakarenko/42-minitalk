@@ -19,4 +19,13 @@
 #include <signal.h>
 #include <stdlib.h>
 
+/*
+** The server functions
+*/
+
+void	print_message(char **str);
+char	*add_char(char *str, char c, int);
+char	*get_new_message(void);
+void	update_buffer(char *buf, short value, short *sig_counter);
+
 #endif

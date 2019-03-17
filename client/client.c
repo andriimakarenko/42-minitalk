@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../minitalk.h"
+
 int	print_exit(char *str)
 {
 	__builtin_printf(str);
@@ -21,14 +23,13 @@ int	main(int argc, char **argv)
 	pid_t	server_pid;
 
 	if (argc != 3)
-		return (print_exit("Usage: \"./client \%server_PID\% \
-				\%message\%\"\n"));
+		return (print_exit("Usage: \"./client server_PID message\"\n"));
 	if (!argv[2] || !argv[2][0])
 		return (print_exit("Stop messin with me, \
 				enter a valid message\n"));
 	if (!(isnumeric(argv[1])))
 		return (print_exit("PID must comprise of numbers only\n"));
-	server_pid = (pid_t)ft_atoi(argv[1]);
-	if (server_pid < 0 || server_pid > 2148000000)
+	server_pid = (pid_t);
+	if (server_pid < 0)
 		return (print_exit("PID should be between 0 and int max\n"));
 }

@@ -19,13 +19,20 @@
 #include <signal.h>
 #include <stdlib.h>
 
+typedef struct		s_message
+{
+	char			*text;
+	int				gchar;
+	unsigned char	gbit;
+}					t_message;
+
 /*
 ** The server functions
 */
 
-void	print_message(char **str);
-char	*add_char(char *str, char c, int);
-char	*get_new_message(void);
-void	update_buffer(char *buf, short value, short *sig_counter);
+void		print_message(char *str);
+char		*add_char(char *str, char c);
+t_message	*get_new_message(void);
+void		*update_char(int sig);
 
 #endif

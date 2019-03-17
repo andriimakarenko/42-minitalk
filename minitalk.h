@@ -31,8 +31,9 @@ typedef struct		s_message
 */
 
 // void		print_message(char *str);
-char			*add_char(char *str, char c);
-void			get_new_message(void);
-static void		update_char(int sig);
+char				*add_char(char *str, char c);
+void				get_new_message(void);
+static void			handle_sig1(int sig);
+static void			handle_sig2(int sig);
 
 #endif

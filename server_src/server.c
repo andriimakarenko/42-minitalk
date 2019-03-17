@@ -16,44 +16,6 @@
 
 t_message g_message;
 
-int		ft_abs(int nb)
-{
-	if (nb < 0)
-		nb = -nb;
-	return (nb);
-}
-
-char	*ft_itoa_base(int value, int base)
-{
-	char	*str;
-	int		size;
-	char	*tab;
-	int		flag;
-	int		tmp;
-	flag = 0;
-	size = 0;
-	tab = "0123456789ABCDEF";
-	if (base < 2 || base > 16)
-		return (0);
-	if (value < 0 && base == 10)
-		flag = 1;
-	tmp = value;
-	while (tmp /= base)
-		size++;
-	size = size + flag + 1;
-	str = (char *)malloc(sizeof(char) * size  + 1);
-	str[size] = '\0';
-	if (flag == 1)
-		str[0] = '-';
-	while (size > flag)
-	{
-		str[size - 1] = tab[ft_abs(value % base)];
-		size--;
-		value /=base;
-	}
-	return (str);
-}
-
 char	*add_char(char *str, char c)
 {
 	char	*result;
@@ -79,18 +41,13 @@ void	get_new_message(void)
 static void	handle_sig1(int sig)
 {
 	(void)sig;
-	printf("Read a 1\n");
-	printf("Char before transform is %s\n", ft_itoa_base(g_message.gchar, 2));
 	g_message.gchar ^= 1 << (7 - g_message.gbit);
-	printf("Char is now %s\n", ft_itoa_base(g_message.gchar, 2));
 	g_message.gbit++;
 }
 
 static void	handle_sig2(int sig)
 {
 	(void)sig;
-	printf("Read a 0\n");
-	printf("Char is now %s\n", ft_itoa_base(g_message.gchar, 2));
 	g_message.gbit++;
 }
 
@@ -109,13 +66,12 @@ int		main(void)
 	{
 		if (g_message.gbit == 8)
 		{
-			printf("\nReceived a character \'%c\'\n", g_message.gchar);
 			g_message.text = add_char(g_message.text, g_message.gchar);
-			printf("The message is now %s\n\n", g_message.text);
 			g_message.gbit = 0;
 			if (g_message.gchar == 0)
 			{
 				ft_putstr(g_message.text);
+				ft_putstr("\n");
 				get_new_message();
 			}
 			g_message.gchar = 0;

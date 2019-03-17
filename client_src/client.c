@@ -6,7 +6,7 @@
 /*   By: pkuznets <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 21:49:24 by pkuznets          #+#    #+#             */
-/*   Updated: 2019/03/17 21:50:57 by pkuznets         ###   ########.fr       */
+/*   Updated: 2019/03/17 22:03:10 by pkuznets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void	sender(int server_pid, const char *message)
 	send_symbol(server_pid, '\0');
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	pid_t	server_pid;
-	int	i;
+	int		i;
 
 	if (argc != 3 || !(argv[1]))
 		return (ft_putstr_mod("Usage: \"./client_src server_PID message\"\n"));

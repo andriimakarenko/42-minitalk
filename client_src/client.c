@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_src.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakaren <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 	int i;
 
 	if (argc != 3 || !(argv[1]))
-		return (ft_putstr_mod("Usage: \"./client server_PID message\"\n"));
+		return (ft_putstr_mod("Usage: \"./client_src server_PID message\"\n"));
 	if (!argv[2] || !argv[2][0])
 		return (ft_putstr_mod("Stop messin with me, \
 				enter a valid message\n"));
@@ -100,5 +100,4 @@ int	main(int argc, char **argv)
 	sender(server_pid, argv[2]);
 	if (server_pid < 0)
 		return (ft_putstr_mod("PID should be between 0 and int max\n"));
-	signal(SIGUSR1, (void *)(ft_putstr_mod("The server confirmed receival\n")));
 }

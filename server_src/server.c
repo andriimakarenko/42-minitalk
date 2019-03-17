@@ -16,7 +16,7 @@
 
 t_message g_message;
 
-char	*add_char(char *str, char c)
+char		*add_char(char *str, char c)
 {
 	char	*result;
 	int		i;
@@ -30,7 +30,7 @@ char	*add_char(char *str, char c)
 	return (result);
 }
 
-void	get_new_message(void)
+void		get_new_message(void)
 {
 	g_message.text = (char*)malloc(sizeof(char));
 	g_message.text[0] = '\0';
@@ -51,7 +51,7 @@ static void	handle_sig2(int sig)
 	g_message.gbit++;
 }
 
-int		main(void)
+int			main(void)
 {
 	int		proc_id;
 

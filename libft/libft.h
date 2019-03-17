@@ -88,4 +88,5 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_stronlychr(char const *s, char c);
 int					ft_strnotchr(char const *s, char c);
+int					ft_putstr_mod(char const *s);
 #endif

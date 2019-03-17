@@ -51,7 +51,7 @@ char		*ft_itoa(int n)
 	result[len + 1] = '\0';
 	while (len > neg)
 	{
-		result[len - neg] = (n % 10) + 48;
+		result[len - neg] = (char)((n % 10) + 48);
 		n /= 10;
 		len--;
 	}

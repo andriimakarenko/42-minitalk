@@ -113,9 +113,12 @@ int		main(void)
 			g_message.text = add_char(g_message.text, g_message.gchar);
 			printf("The message is now %s\n\n", g_message.text);
 			g_message.gbit = 0;
-			if (g_message.gchar == '\0')
+			if (g_message.gchar == 0)
+			{
 				ft_putstr(g_message.text);
-			get_new_message();
+				get_new_message();
+			}
+			g_message.gchar = 0;
 		}
 		usleep(30);
 	}

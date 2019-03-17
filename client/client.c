@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 				enter a valid message\n"));
 	if (is_numeric(argv[1]) != 0)
 		return (print_exit("PID must comprise of numbers only\n"));
-	server_pid = (pid_t);
+	server_pid = (pid_t)ft_atoi(argv[1]);
 	if (server_pid < 0)
 		return (print_exit("PID should be between 0 and int max\n"));
 }

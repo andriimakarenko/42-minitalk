@@ -22,11 +22,11 @@ all : $(LIBFT) $(SERVER) $(CLIENT)
 $(LIBFT) :
 	@make -C libft
 
-$(SERVER) : server/server.o  minitalk.h
-	@$(CC) server/server.o $(LIBS) -o $@
+$(SERVER) : ./server_src/server.c  minitalk.h
+	@$(CC) ./server_src/server.c $(LIBS) -o $@
 
-$(CLIENT) : client/client.o minitalk.h
-	@$(CC) client/client.o $(LIBS) -o $@
+$(CLIENT) : ./client_src/client.c minitalk.h
+	@$(CC) ./client_src/client.c $(LIBS) -o $@
 
 %.o : %.c
 	@$(CC) $(FLAGS) $< -c -I minitalk.h

@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 	char	*message;
 
 	proc_id = (int)getpid();
-	__builtin_printf("My PID is \"%d\". If you enter anything \
-	other than exactly this, I won't work, and that's a designed feature,\
-	not a bug.\n", proc_id);
+	ft_putstr(ft_strjoin(ft_itoa(proc_id), \
+	" - my PID. If you enter anything other than exactly this, I won't work,"
+ 	" and that's a designed feature, not a bug.\n"));
 	return (0);
 }

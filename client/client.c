@@ -18,7 +18,7 @@ int	print_exit(char *str)
 	return (0);
 }
 
-int is_numeric(char *str)
+int is_numeric(const char *str)
 {
 	int i;
 
